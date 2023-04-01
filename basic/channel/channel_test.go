@@ -1,0 +1,64 @@
+package channel
+
+import (
+	"fmt"
+	"sync"
+	"testing"
+	"time"
+)
+
+func TestIsClosed(t *testing.T) {
+	closeChan := make(chan T)
+	ok := IsClosed(closeChan)
+	if ok {
+		t.Fatal("is closed func error")
+	}
+	close(closeChan)
+	ok = IsClosed(closeChan)
+	if !ok {
+		t.Fatal("is closed func error")
+	}
+}
+
+//已关闭的channel仍能取到数据 为channel类型的默认0值 可以用此来做同步信号
+func TestChannel(t *testing.T) {
+	testChan := make(chan struct{})
+	wg := sync.WaitGroup{}
+	wg.Add(1)
+	go func() {
+		time.Sleep(time.Second * 3)
+		close(testChan)
+		wg.Done()
+	}()
+
+	wg.Wait()
+	for i := 0; i < 10; i++ {
+		select {
+		case x := <-testChan:
+			fmt.Printf("从已关闭的chan中取到数据:%v \n", x)
+		}
+	}
+}
+
+// 便利channel取数据 当channel关闭后也会把其中的数据取完再结束便利
+func TestCloseChannel(t *testing.T) {
+	testChan := make(chan int, 10)
+	wg := sync.WaitGroup{}
+	wg.Add(1)
+	go func() {
+		for i := 0; i < 10; i++ {
+			testChan <- i
+		}
+		close(testChan)
+		wg.Done()
+	}()
+
+	wg.Wait()
+	for v := range testChan {
+		fmt.Println(v)
+	}
+}
+
+func TestOneReceiver(t *testing.T) {
+	ReceiverCloseChan()
+}
