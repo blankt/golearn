@@ -85,7 +85,7 @@ func TestSend(t *testing.T) {
 	dataChan := make(chan int)
 	for i := 0; i < 2; i++ {
 		go func(index int) {
-			if i == 1 {
+			if index == 1 {
 				time.Sleep(time.Second * 1)
 			}
 			dataChan <- index
