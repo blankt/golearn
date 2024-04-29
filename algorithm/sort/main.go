@@ -11,5 +11,11 @@ func main() {
 
 	//fmt.Println(insertion(nums))
 
-	fmt.Println(shell(nums))
+	//fmt.Println(shell(nums))
+
+	//fmt.Println(mergeSort(nums))
+
+	//fmt.Println(quick(nums, 0, len(nums)-1))
+
+	fmt.Println(heap(nums))
 }
