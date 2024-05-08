@@ -17,7 +17,7 @@ func main() {
 	//fmt.Println(lengthOfLongestSubstring(s))
 	//fmt.Println(lengthOfLongestSubstring1(s))
 
-	s := "abaacbabc"
-	p := "abc"
-	fmt.Println(findAnagrams(s, p))
+	s := "baa"
+	p := "aa"
+	fmt.Println(findAnagrams1(s, p))
 }
