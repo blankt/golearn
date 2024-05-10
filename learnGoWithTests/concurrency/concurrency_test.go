@@ -33,3 +33,7 @@ func BenchmarkCheckWebsiteUrls(t *testing.B) {
 		}
 	}
 }
+
+func TestBroadcast(t *testing.T) {
+	broadcast()
+}
