@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -35,9 +34,4 @@ func merge(intervals [][]int) [][]int {
 	} else {
 		return result[:index+1]
 	}
-}
-
-func main() {
-	intervals := [][]int{{1, 3}, {2, 6}, {8, 10}, {15, 18}}
-	fmt.Println(merge(intervals))
 }
