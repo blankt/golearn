@@ -1,6 +1,14 @@
-package main
+package is_valid_bst
 
-import "math"
+import (
+	"math"
+)
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
 
 func isValidBST(root *TreeNode) bool {
 	if root == nil {

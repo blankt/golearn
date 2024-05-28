@@ -1,4 +1,4 @@
-package main
+package avl_tree
 
 /*
 以下是生成平衡二叉树

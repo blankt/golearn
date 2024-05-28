@@ -1,6 +1,8 @@
-package main
+package is_valid_bst
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestIsValidBST(t *testing.T) {
 	root := &TreeNode{
